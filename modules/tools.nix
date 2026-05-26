@@ -12,7 +12,7 @@
     eza bat fzf zoxide yazi starship
 
     # dev
-    gcc git neovim fnm bun
+    gcc git neovim fnm bun lazygit gh
 
     # apps
     telegram-desktop anydesk vscode

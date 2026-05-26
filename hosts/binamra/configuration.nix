@@ -7,7 +7,6 @@
     ../../modules/system.nix
     ../../modules/desktop.nix
     ../../modules/tools.nix
-    ../../modules/tools.nix
   ];
 
   networking.hostName = "binamra";
