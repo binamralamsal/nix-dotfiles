@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -12,9 +12,8 @@
     jq
     htop
     btop
-
-    ghostty
     firefox
+    ghostty
   ];
 
   programs.git.enable = true;

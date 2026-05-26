@@ -8,7 +8,7 @@
     ./zsh.nix
     ./git.nix
 #    ./hyprland.nix
-#    ./ghostty.nix
+    ./ghostty.nix
   ];
 
   home.stateVersion = "25.11";
