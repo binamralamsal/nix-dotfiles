@@ -22,6 +22,7 @@
     starship
     fnm
     bun
+    telegram-desktop
   ];
 
   programs.git.enable = true;
