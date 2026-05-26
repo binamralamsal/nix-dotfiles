@@ -2,9 +2,11 @@
   # boot
   boot.loader.grub = {
     enable = true;
-    device = "/dev/sda";
+    device = "nodev";
+    efiSupport = true;
     useOSProber = true;
   };
+  boot.loader.efi.canTouchEfiVariables = true;
 
   # networking
   networking.networkmanager.enable = true;
