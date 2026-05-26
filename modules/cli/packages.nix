@@ -23,6 +23,11 @@
     fnm
     bun
     telegram-desktop
+    anydesk
+    vscode
+    foliate
+    qbittorrent
+    appimage-run
   ];
 
   programs.git.enable = true;
