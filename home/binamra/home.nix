@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
   home.username = "binamra";
@@ -10,12 +10,6 @@
     ./firefox.nix
     ./ghostty.nix
   ];
-
-  home.activation.installNode =
-    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      ${pkgs.fnm}/bin/fnm install latest
-      ${pkgs.fnm}/bin/fnm default latest
-    '';
 
   home.stateVersion = "25.11";
 }
