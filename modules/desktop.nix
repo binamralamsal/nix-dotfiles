@@ -8,4 +8,16 @@
     layout = "us";
     variant = "";
   };
+
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-tour
+    gnome-console
+    gnome-connections
+    epiphany
+    geary
+    gnome-maps
+    gnome-music
+    gnome-weather
+    yelp
+  ];
 }
