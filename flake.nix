@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url =
       "github:NixOS/nixpkgs/nixos-25.11";
+    
+    hyprland.url = "github:hyprwm/Hyprland";
 
     home-manager.url =
       "github:nix-community/home-manager/release-25.11";
@@ -17,25 +19,20 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, ... }:
+  outputs = { self, nixpkgs, home-manager, nur, hyprland, ... } @ inputs:
   {
     nixosConfigurations.binamra =
       nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-
+        specialArgs = { inherit inputs; };   # <-- add this
         modules = [
-	  nur.modules.nixos.default
-
+          nur.modules.nixos.default
           ./hosts/binamra/configuration.nix
-
           home-manager.nixosModules.home-manager
-
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-
-            home-manager.users.binamra =
-              import ./home/binamra/home.nix;
+            home-manager.users.binamra = import ./home/binamra/home.nix;
           }
         ];
       };

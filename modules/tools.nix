@@ -3,7 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     # core utilities
-    wget curl unzip zip tree
+    wget curl unzip zip tree killall
 
     # search & monitor
     ripgrep fd jq htop btop
@@ -12,11 +12,12 @@
     eza bat fzf zoxide yazi starship
 
     # dev
-    gcc neovim fnm bun lazygit
+    gcc neovim fnm bun lazygit python315
 
     # apps
     telegram-desktop anydesk vscode
     foliate qbittorrent appimage-run
+    waybar anyrun hyprpaper hyprlauncher
   ];
 
   programs.zsh.enable = true;
