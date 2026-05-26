@@ -7,7 +7,7 @@
   imports = [
     ./zsh.nix
     ./git.nix
-#    ./hyprland.nix
+    ./firefox.nix
     ./ghostty.nix
   ];
 

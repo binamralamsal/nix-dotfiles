@@ -10,15 +10,22 @@
 
     home-manager.inputs.nixpkgs.follows =
       "nixpkgs";
+
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, nur, ... }:
   {
     nixosConfigurations.binamra =
       nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
         modules = [
+	  nur.modules.nixos.default
+
           ./hosts/binamra/configuration.nix
 
           home-manager.nixosModules.home-manager

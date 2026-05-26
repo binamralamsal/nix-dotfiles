@@ -28,21 +28,6 @@
     vimAlias = true;
   };
 
-  programs.firefox = {
-    enable = true;
-
-    profiles.default = {
-      extensions.packages =
-        with pkgs.nur.repos.rycee.firefox-addons; [
-          bitwarden
-          ublock-origin
-          wappalyzer
-          sponsorblock
-        ];
-    };
-  };
-
-
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
