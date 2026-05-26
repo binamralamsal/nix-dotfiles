@@ -12,8 +12,16 @@
     jq
     htop
     btop
-    firefox
     ghostty
+
+    eza
+    bat
+    fzf
+    zoxide
+    yazi
+    starship
+    fnm
+    bun
   ];
 
   programs.git.enable = true;
