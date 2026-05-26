@@ -4,15 +4,10 @@
   imports = [
     ./hardware-configuration.nix
 
-    ../../modules/system/boot.nix
-    ../../modules/system/networking.nix
-    ../../modules/system/audio.nix
-
-    ../../modules/desktop/gnome.nix
-#    ../../modules/desktop/hyprland.nix
-
-    ../../modules/cli/packages.nix
-    ../../modules/cli/dev.nix
+    ../../modules/system.nix
+    ../../modules/desktop.nix
+    ../../modules/tools.nix
+    ../../modules/tools.nix
   ];
 
   networking.hostName = "binamra";
