@@ -9,7 +9,6 @@
     ./git.nix
     ./firefox.nix
     ./ghostty.nix
-    ./hyprland.nix
   ];
 
   home.stateVersion = "25.11";
