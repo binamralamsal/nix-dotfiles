@@ -13,4 +13,11 @@
       pull.rebase = true;
     };
   };
+
+  programs.gh = {
+    enable = true;
+    settings = {
+      git_protocol = "https";
+    };
+  };
 }
