@@ -2,16 +2,13 @@
   description = "Binamra NixOS config";
 
   inputs = {
-    nixpkgs.url =
-      "github:NixOS/nixpkgs/nixos-25.11";
-    
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+
     hyprland.url = "github:hyprwm/Hyprland";
 
-    home-manager.url =
-      "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
 
-    home-manager.inputs.nixpkgs.follows =
-      "nixpkgs";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nur = {
       url = "github:nix-community/NUR";
@@ -19,22 +16,29 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nur, hyprland, ... } @ inputs:
-  {
-    nixosConfigurations.binamra =
-      nixpkgs.lib.nixosSystem {
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      nur,
+      hyprland,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations.binamra = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
           nur.modules.nixos.default
-          ./hosts/binamra/configuration.nix
+          ./configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.binamra = import ./home/binamra/home.nix;
+            home-manager.users.binamra = import ./home.nix;
           }
         ];
       };
-  };
+    };
 }

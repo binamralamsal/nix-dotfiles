@@ -4,9 +4,9 @@
   imports = [
     ./hardware-configuration.nix
 
-    ../../modules/system.nix
-    ../../modules/desktop.nix
-    ../../modules/tools.nix
+    ./modules/system.nix
+    ./modules/desktop.nix
+    ./modules/tools.nix
   ];
 
   networking.hostName = "binamra";
