@@ -50,7 +50,7 @@
     waybar
     anyrun
     hyprpaper
-    wofi
+    walker
     swaynotificationcenter
 
     # screenshots / clipboard

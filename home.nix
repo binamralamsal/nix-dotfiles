@@ -4,7 +4,6 @@ let
   symlink = path: config.lib.file.mkOutOfStoreSymlink path;
   configs = {
     hypr = "hypr";
-    wofi = "wofi";
     # Add more as you create them:
     # waybar = "waybar";
     # wofi = "wofi";
