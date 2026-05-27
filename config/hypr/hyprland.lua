@@ -595,52 +595,11 @@ hl.window_rule({
 -- })
 -- overlayLayerRule:set_enabled(false)
 
--- Hyprland-run windowrule
-hl.window_rule({
-    name  = "move-hyprland-run",
-    match = { class = "hyprland-run" },
-
-    move  = "20 monitor_h-120",
-    float = true,
-})
-
--- Firefox full width
-hl.window_rule({
-    name = "firefox-width",
-    match = { class = "firefox" },
-    scrolling_width = 1.0,
-})
-
--- VSCode full width
-hl.window_rule({
-    name = "vscode-width",
-    match = { class = "code" },
-    scrolling_width = 1.0,
-})
-
--- Telegram full width
-hl.window_rule({
-    name = "telegram-width",
-    match = { class = "org.telegram.desktop" },
-    scrolling_width = 1.0,
-})
-
--- Terminal medium width
-hl.window_rule({
-    name = "ghostty-width",
-    match = { class = "com.mitchellh.ghostty" },
-    scrolling_width = 0.65,
-    opacity = "0.85 0.75",
-})
-
--- File manager medium width
-hl.window_rule({
-    name = "nautilus-width",
-    match = { class = "org.gnome.Nautilus" },
-    scrolling_width = 0.65,
-})
-
-hl.workspace_rule({
-    workspace = "special:magic",
-    gaps_out = { top = 70, bottom = 70, left = 50, right = 50 },
-})
+-- Window Rules
+hl.window_rule({ name  = "move-hyprland-run", match = { class = "hyprland-run" }, move  = "20 monitor_h-120", float = true, })
+hl.window_rule({ name = "firefox-width", match = { class = "firefox" }, scrolling_width = 1.0, })
+hl.window_rule({ name = "vscode-width", match = { class = "Code" }, scrolling_width = 1.0, opacity = "0.9" })
+hl.window_rule({ name = "telegram-width", match = { class = "org.telegram.desktop" }, scrolling_width = 1.0, })
+hl.window_rule({ name = "ghostty-width", match = { class = "com.mitchellh.ghostty" }, scrolling_width = 0.65, opacity = "0.85 0.75", })
+hl.window_rule({ name = "nautilus-width", match = { class = "org.gnome.Nautilus" }, scrolling_width = 0.65, })
+hl.workspace_rule({ workspace = "special:magic", gaps_out = { top = 70, bottom = 70, left = 50, right = 50 }, })

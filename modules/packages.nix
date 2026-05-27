@@ -42,6 +42,7 @@
     fnm
     bun
     nixfmt
+    lua-language-server
 
     # =========================
     # Hyprland / Wayland
