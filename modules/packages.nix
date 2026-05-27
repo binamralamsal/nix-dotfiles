@@ -12,6 +12,7 @@
     tree
     file
     killall
+    nwg-look
 
     # =========================
     # Terminal / CLI tools
@@ -48,10 +49,10 @@
     # Hyprland / Wayland
     # =========================
     waybar
-    anyrun
     hyprpaper
-    walker
     swaynotificationcenter
+    swayosd
+    vicinae
 
     # screenshots / clipboard
     grim
@@ -70,6 +71,7 @@
     obs-studio
     anydesk
     appimage-run
+    brave # just because helium isn't available
   ];
 
   programs.zsh.enable = true;

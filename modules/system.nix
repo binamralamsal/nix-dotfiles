@@ -35,6 +35,21 @@
   };
   services.blueman.enable = true;
 
+  # media
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    ffmpeg-full
+    gst_all_1.gstreamer
+    gst_all_1.gst-libav
+    gst_all_1.gst-plugins-good
+    gst_all_1.gst-plugins-bad
+    gst_all_1.gst-plugins-ugly
+  ];
+
   # gnome / gd services.xserver.enable = true;
 
   services.displayManager.gdm.enable = true;
