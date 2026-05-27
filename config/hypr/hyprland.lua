@@ -490,8 +490,8 @@ hl.bind(mainMod .. " + SHIFT + h", hl.dsp.layout("swapcol l"))
 hl.bind(mainMod .. " + SHIFT + l", hl.dsp.layout("swapcol r"))
 
 -- Move windows to left/right workspace
-hl.bind(mainMod .. " + SHIFT + ALT + H", hl.dsp.window.move({ workspace = "e-1" }))
-hl.bind(mainMod .. " + SHIFT + ALT + L", hl.dsp.window.move({ workspace = "e+1" }))
+hl.bind(mainMod .. " + SHIFT + U", hl.dsp.window.move({ workspace = "e-1" }))
+hl.bind(mainMod .. " + SHIFT + I", hl.dsp.window.move({ workspace = "e+1" }))
 
 -- Resize window with arrows - dwindle
 --[[hl.bind(mainMod .. " + CTRL + right", hl.dsp.window.resize({ x = 20,  y = 0,  relative = true }))
@@ -516,10 +516,7 @@ hl.bind("CTRL + SHIFT + H", hl.dsp.group.prev())
 hl.bind("CTRL + SHIFT + G", hl.dsp.window.move({ out_of_group = true }))
 hl.bind(mainMod .. " + SHIFT + G", hl.dsp.group.lock_active())
 hl.bind("SHIFT + ALT + J", hl.dsp.group.move_window({ direction = "d" }))
-hl.bind("SHIFT + ALT + k", hl.dsp.group.move_window({ direction = "u" }))
-hl.bind("SHIFT + ALT + l", hl.dsp.group.move_window({ direction = "r" }))
-hl.bind("SHIFT + ALT + h", hl.dsp.group.move_window({ direction = "l" }))
-
+hl.bind("SHIFT + ALT + k", hl.dsp.group.move_window({ direction = "u" })) hl.bind("SHIFT + ALT + l", hl.dsp.group.move_window({ direction = "r" })) hl.bind("SHIFT + ALT + h", hl.dsp.group.move_window({ direction = "l" }))
 -- toggle waybar
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
 
