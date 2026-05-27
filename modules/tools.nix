@@ -19,8 +19,7 @@
     foliate qbittorrent appimage-run
     waybar anyrun hyprpaper hyprlauncher
     slurp swappy grim wl-clipboard cliphist
-    swaynotificationcenter
-    inputs.hyprpaper.packages.${pkgs.stdenv.hostPlatform.system}.default
+    swaynotificationcenter hyprpaper
   ];
 
   programs.zsh.enable = true;

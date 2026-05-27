@@ -7,12 +7,6 @@
     
     hyprland.url = "github:hyprwm/Hyprland";
 
-
-    hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager.url =
       "github:nix-community/home-manager/release-25.11";
 
