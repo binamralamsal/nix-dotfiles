@@ -1,4 +1,11 @@
 {
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+
+{
   # boot
   boot.loader.grub = {
     enable = true;
@@ -27,4 +34,36 @@
     powerOnBoot = true;
   };
   services.blueman.enable = true;
+
+  # gnome / gd services.xserver.enable = true;
+
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
+
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "";
+  };
+
+  environment.gnome.excludePackages = with pkgs; [
+    gnome-tour
+    gnome-console
+    gnome-connections
+    epiphany
+    geary
+    gnome-maps
+    gnome-music
+    gnome-weather
+    yelp
+  ];
+
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    withUWSM = true;
+    xwayland.enable = true;
+  };
+
 }

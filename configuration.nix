@@ -5,8 +5,7 @@
     ./hardware-configuration.nix
 
     ./modules/system.nix
-    ./modules/desktop.nix
-    ./modules/tools.nix
+    ./modules/packages.nix
   ];
 
   networking.hostName = "binamra";
