@@ -13,6 +13,9 @@
     file
     killall
     nwg-look
+    pamixer
+    brightnessctl
+    libnotify
 
     # =========================
     # Terminal / CLI tools
@@ -53,6 +56,8 @@
     swaynotificationcenter
     swayosd
     vicinae
+    wlogout
+    swaylock
 
     # screenshots / clipboard
     grim
