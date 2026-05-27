@@ -20,6 +20,7 @@
     waybar anyrun hyprpaper hyprlauncher
     slurp swappy grim wl-clipboard cliphist
     swaynotificationcenter hyprpaper obs-studio
+    file
   ];
 
   programs.zsh.enable = true;
