@@ -621,3 +621,8 @@ hl.window_rule({
     match = { class = "org.gnome.Nautilus" },
     scrolling_width = 0.65,
 })
+
+hl.workspace_rule({
+    workspace = "special:magic",
+    gaps_out = { top = 70, bottom = 70, left = 50, right = 50 },
+})
