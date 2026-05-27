@@ -137,98 +137,137 @@ hl.config({
     },
 })
 
---[[Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
-hl.curve("easeOutQuint",   { type = "bezier", points = { {0.23, 1},    {0.32, 1}    } })
-hl.curve("easeInOutCubic", { type = "bezier", points = { {0.65, 0.05}, {0.36, 1}    } })
-hl.curve("linear",         { type = "bezier", points = { {0, 0},       {1, 1}       } })
-hl.curve("almostLinear",   { type = "bezier", points = { {0.5, 0.5},   {0.75, 1}    } })
-hl.curve("quick",          { type = "bezier", points = { {0.15, 0},    {0.1, 1}     } })
+-----------------------
+---- LOOK AND FEEL ----
+-----------------------
 
--- Default springs
-hl.curve("easy",           { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
+-- Curves
+hl.curve("niri_motion", {
+    type = "spring",
+    mass = 1,
+    stiffness = 200,
+    dampening = 25,
+})
 
-hl.animation({ leaf = "global",        enabled = true,  speed = 10,   bezier = "default" })
-hl.animation({ leaf = "border",        enabled = true,  speed = 5.39, bezier = "easeOutQuint" })
-hl.animation({ leaf = "windows",       enabled = true,  speed = 4.79, spring = "easy" })
-hl.animation({ leaf = "windowsIn",     enabled = true,  speed = 4.1,  spring = "easy",         style = "popin 87%" })
-hl.animation({ leaf = "windowsOut",    enabled = true,  speed = 1.49, bezier = "linear",       style = "popin 87%" })
-hl.animation({ leaf = "fadeIn",        enabled = true,  speed = 1.73, bezier = "almostLinear" })
-hl.animation({ leaf = "fadeOut",       enabled = true,  speed = 1.46, bezier = "almostLinear" })
-hl.animation({ leaf = "fade",          enabled = true,  speed = 3.03, bezier = "quick" })
-hl.animation({ leaf = "layers",        enabled = true,  speed = 3.81, bezier = "easeOutQuint" })
-hl.animation({ leaf = "layersIn",      enabled = true,  speed = 4,    bezier = "easeOutQuint", style = "fade" })
-hl.animation({ leaf = "layersOut",     enabled = true,  speed = 1.5,  bezier = "linear",       style = "fade" })
-hl.animation({ leaf = "fadeLayersIn",  enabled = true,  speed = 1.79, bezier = "almostLinear" })
-hl.animation({ leaf = "fadeLayersOut", enabled = true,  speed = 1.39, bezier = "almostLinear" })
-hl.animation({ leaf = "workspaces",    enabled = true,  speed = 1.94, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "workspacesIn",  enabled = true,  speed = 1.21, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "workspacesOut", enabled = true,  speed = 1.94, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "quick" })--]]
-hl.curve("smooth", {
+hl.curve("niri_fast", {
     type = "bezier",
-    points = { {0.18, 0.9}, {0.2, 1} }
+    points = {
+        {0.25, 1},
+        {0.5,  1}
+    }
 })
 
-hl.curve("quick", {
+hl.curve("niri_fade", {
     type = "bezier",
-    points = { {0.15, 0}, {0.1, 1} }
+    points = {
+        {0.0, 0.0},
+        {0.1, 1.0}
+    }
 })
 
-hl.animation({ leaf = "global", enabled = true, speed = 5, bezier = "smooth" })
-hl.animation({ leaf = "border", enabled = true, speed = 4, bezier = "quick" })
-
+-- Windows: slide in from top, out to bottom (niri-like)
 hl.animation({
-    leaf = "windows",
+    leaf    = "windows",
     enabled = true,
-    speed = 5,
-    bezier = "smooth",
-    style = "slide"
-})
-
-hl.animation({
-    leaf = "windowsIn",
-    enabled = true,
-    speed = 5,
-    bezier = "smooth",
-    style = "slide"
+    speed   = 2.5,
+    spring  = "niri_motion",
+    style   = "slide top",
 })
 
 hl.animation({
-    leaf = "windowsOut",
+    leaf    = "windowsIn",
     enabled = true,
-    speed = 4,
-    bezier = "quick",
-    style = "popin 94%"
-})
-
--- lighter fade
-hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "quick" })
-hl.animation({ leaf = "fadeIn", enabled = true, speed = 3, bezier = "quick" })
-hl.animation({ leaf = "fadeOut", enabled = true, speed = 3, bezier = "quick" })
-
--- workspace switching: quick slide, very little fade
-hl.animation({
-    leaf = "workspaces",
-    enabled = true,
-    speed = 4,
-    bezier = "smooth",
-    style = "slidefade 8%"
+    speed   = 2.5,
+    spring  = "niri_motion",
+    style   = "slide top",
 })
 
 hl.animation({
-    leaf = "workspacesIn",
+    leaf    = "windowsOut",
     enabled = true,
-    speed = 4,
-    bezier = "smooth",
-    style = "slidefade 8%"
+    speed   = 1.5,
+    bezier  = "niri_fast",
+    style   = "slide bottom",
+})
+
+-- Fades: quick, barely noticeable
+hl.animation({
+    leaf    = "fade",
+    enabled = true,
+    speed   = 2,
+    bezier  = "niri_fade",
 })
 
 hl.animation({
-    leaf = "workspacesOut",
+    leaf    = "fadeIn",
     enabled = true,
-    speed = 4,
-    bezier = "smooth",
-    style = "slidefade 8%"
+    speed   = 2,
+    bezier  = "niri_fade",
+})
+
+hl.animation({
+    leaf    = "fadeOut",
+    enabled = true,
+    speed   = 1.5,
+    bezier  = "niri_fade",
+})
+
+-- Border
+hl.animation({
+    leaf    = "border",
+    enabled = true,
+    speed   = 3,
+    bezier  = "niri_fast",
+})
+
+-- Workspaces: vertical slide (niri's defining trait)
+hl.animation({
+    leaf    = "workspaces",
+    enabled = true,
+    speed   = 2.5,
+    spring  = "niri_motion",
+    style   = "slidevert",
+})
+
+hl.animation({
+    leaf    = "workspacesIn",
+    enabled = true,
+    speed   = 2.5,
+    spring  = "niri_motion",
+    style   = "slidevert",
+})
+
+hl.animation({
+    leaf    = "workspacesOut",
+    enabled = true,
+    speed   = 2.5,
+    spring  = "niri_motion",
+    style   = "slidevert",
+})
+
+-- Layers (waybar, rofi, etc.): fade in/out
+hl.animation({
+    leaf    = "layers",
+    enabled = true,
+    speed   = 2,
+    bezier  = "niri_fast",
+    style   = "fade",
+})
+
+hl.animation({
+    leaf    = "layersIn",
+    enabled = true,
+    speed   = 2,
+    bezier  = "niri_fast",
+    style   = "fade",
+})
+
+hl.animation({
+    leaf    = "layersOut",
+    enabled = true,
+    speed   = 1.5,
+    bezier  = "niri_fade",
+    style   = "fade",
 })
 
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
@@ -367,8 +406,8 @@ hl.bind(mainMod .. " + k",    hl.dsp.focus({ direction = "u" }))
 hl.bind(mainMod .. " + j",  hl.dsp.focus({ direction = "d" }))--]]
 
 -- Move focus with mainMod + h,j,k,l -- scrolling
-hl.bind(mainMod .. " + h",  hl.dsp.layout("focus l"))
-hl.bind(mainMod .. " + l", hl.dsp.layout("focus r"))
+hl.bind(mainMod .. " + comma",  hl.dsp.layout("focus l"))
+hl.bind(mainMod .. " + period", hl.dsp.layout("focus r"))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -382,19 +421,33 @@ end
 hl.bind(mainMod .. " + C",         hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.window.move({ workspace = "special:magic" }))
 
--- Scroll through existing workspaces with mainMod + scroll
-hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
-
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Scroll through existing workspaces
-hl.bind(mainMod .. " + ALT + h", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(mainMod .. " + ALT + l", hl.dsp.focus({ workspace = "e+1" }))
-hl.bind(mainMod .. " + ALT + left", hl.dsp.focus({ workspace = "e-1" }))
-hl.bind(mainMod .. " + ALT + right", hl.dsp.focus({ workspace = "e+1" }))
+-- Smart workspace navigation: go to next/prev, or create new if at boundary
+local function workspace_next()
+    local current = hl.get_active_workspace()
+    local current_id = tonumber(current.id)
+    local windows = hl.get_workspace_windows(current.id)
+    if #windows > 0 then
+        hl.dispatch(hl.dsp.focus({ workspace = current.id + 1 }))
+    end
+end
+
+local function workspace_prev()
+    local current = hl.get_active_workspace()
+    local current_id = tonumber(current.id)
+    if current_id > 1 then
+        hl.dispatch(hl.dsp.focus({ workspace = current.id - 1 }))
+    end
+end
+
+hl.bind(mainMod .. " + u", workspace_next)
+hl.bind(mainMod .. " + i", workspace_prev)
+hl.bind(mainMod .. " + mouse_down", workspace_next)
+hl.bind(mainMod .. " + mouse_up",   workspace_prev)
 
 -- Move windows with keyboard -- dwindle
 --[[hl.bind(mainMod .. " + SHIFT + h", hl.dsp.window.move({ direction = "l" }))
@@ -448,8 +501,8 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("hyprctl dispatch centerwindow"))
 
 -- scrolling
 -- move view left/right
-hl.bind(mainMod .. " + comma", hl.dsp.layout("move -col"))
-hl.bind(mainMod .. " + period", hl.dsp.layout("move +col"))
+hl.bind(mainMod .. " + h", hl.dsp.layout("move -col"))
+hl.bind(mainMod .. " + l", hl.dsp.layout("move +col"))
 
 -- resize columns
 hl.bind(mainMod .. " + CTRL + h", hl.dsp.layout("colresize -0.05"))
