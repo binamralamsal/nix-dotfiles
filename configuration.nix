@@ -33,5 +33,10 @@
     "flakes"
   ];
 
+  i18n.inputMethod = {
+    enabled = "ibus";
+    ibus.engines = with pkgs.ibus-engines; [ mozc ];
+  };
+
   system.stateVersion = "25.11";
 }

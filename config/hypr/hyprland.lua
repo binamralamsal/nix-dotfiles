@@ -30,7 +30,7 @@ hl.monitor({
 -- Set programs that you use
 local terminal    = "ghostty"
 local fileManager = "nautilus"
-local menu        = "vicinae open"
+local menu        = "vicinae vicinae://toggle"
 
 
 -------------------
@@ -51,7 +51,7 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("swaync")
   hl.exec_cmd("swayosd-server")
   hl.exec_cmd("vicinae server")
-  hl.exec_cmd("ibus start")
+  hl.exec_cmd("ibus-daemon --panel=disable --xim -d -r")
   hl.exec_cmd("nm-applet --indicator")
   hl.exec_cmd("wl-paste --watch cliphist store")
 end)
@@ -65,6 +65,8 @@ end)
 
 hl.env("XCURSOR_SIZE", 24)
 hl.env("HYPRCURSOR_SIZE", 24)
+hl.env("XMODIFIERS", "@im=ibus")
+hl.env("IBUS_USE_PORTAL", "1")
 
 
 -----------------------
@@ -113,7 +115,7 @@ hl.config({
     },
 
     decoration = {
-        rounding       = 10,
+        rounding       = 5,
         rounding_power = 2,
 
         -- Change transparency of focused and unfocused windows
@@ -399,7 +401,8 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("wlogout --protocol layer-shell"))
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("cliphist list| wofi --dmenu| cliphist decode| wl-copy"))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("vicinae vicinae://extensions/vicinae/clipboard/history?toggle=true"))
+hl.bind(mainMod .. " + semicolon", hl.dsp.exec_cmd("vicinae vicinae://extensions/vicinae/vicinae/search-emojis?toggle=true"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 -- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.layout("togglesplit"))    -- dwindle only
@@ -506,7 +509,7 @@ hl.bind(mainMod .. " + CTRL + k", hl.dsp.window.resize({ x = 0,   y = -20, relat
 hl.bind(mainMod .. " + CTRL + j", hl.dsp.window.resize({ x = 0,   y = 20, relative = true }))--]]
 
 -- fullscreen
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen_state({ internal = 1, client = 0, action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen())
 
 -- i3wm like groups

@@ -1,7 +1,7 @@
 {
-  "layer": "overlay",
+  "layer": "top",
   "position": "top",
-  "mod": "dock",
+  "mode": "dock",
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
@@ -22,6 +22,14 @@
     "on-click": "vicinae open",
     "tooltip": false,
   },
+
+"hyprland/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": true,
+    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"{id}\" })'",
+    "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'",
+    "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'"
+},
 
   "custom/lock_screen": {
     "format": "",
