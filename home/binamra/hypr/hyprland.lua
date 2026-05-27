@@ -102,7 +102,7 @@ hl.config({
         -- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
         allow_tearing = false,
 
-        layout = "dwindle",
+        layout = "scrolling",
     },
 
     decoration = {
@@ -137,7 +137,7 @@ hl.config({
     },
 })
 
--- Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
+--[[Default curves and animations, see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Animations/
 hl.curve("easeOutQuint",   { type = "bezier", points = { {0.23, 1},    {0.32, 1}    } })
 hl.curve("easeInOutCubic", { type = "bezier", points = { {0.65, 0.05}, {0.36, 1}    } })
 hl.curve("linear",         { type = "bezier", points = { {0, 0},       {1, 1}       } })
@@ -163,7 +163,73 @@ hl.animation({ leaf = "fadeLayersOut", enabled = true,  speed = 1.39, bezier = "
 hl.animation({ leaf = "workspaces",    enabled = true,  speed = 1.94, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "workspacesIn",  enabled = true,  speed = 1.21, bezier = "almostLinear", style = "fade" })
 hl.animation({ leaf = "workspacesOut", enabled = true,  speed = 1.94, bezier = "almostLinear", style = "fade" })
-hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "quick" })
+hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "quick" })--]]
+hl.curve("smooth", {
+    type = "bezier",
+    points = { {0.18, 0.9}, {0.2, 1} }
+})
+
+hl.curve("quick", {
+    type = "bezier",
+    points = { {0.15, 0}, {0.1, 1} }
+})
+
+hl.animation({ leaf = "global", enabled = true, speed = 5, bezier = "smooth" })
+hl.animation({ leaf = "border", enabled = true, speed = 4, bezier = "quick" })
+
+hl.animation({
+    leaf = "windows",
+    enabled = true,
+    speed = 5,
+    bezier = "smooth",
+    style = "slide"
+})
+
+hl.animation({
+    leaf = "windowsIn",
+    enabled = true,
+    speed = 5,
+    bezier = "smooth",
+    style = "slide"
+})
+
+hl.animation({
+    leaf = "windowsOut",
+    enabled = true,
+    speed = 4,
+    bezier = "quick",
+    style = "popin 94%"
+})
+
+-- lighter fade
+hl.animation({ leaf = "fade", enabled = true, speed = 3, bezier = "quick" })
+hl.animation({ leaf = "fadeIn", enabled = true, speed = 3, bezier = "quick" })
+hl.animation({ leaf = "fadeOut", enabled = true, speed = 3, bezier = "quick" })
+
+-- workspace switching: quick slide, very little fade
+hl.animation({
+    leaf = "workspaces",
+    enabled = true,
+    speed = 4,
+    bezier = "smooth",
+    style = "slidefade 8%"
+})
+
+hl.animation({
+    leaf = "workspacesIn",
+    enabled = true,
+    speed = 4,
+    bezier = "smooth",
+    style = "slidefade 8%"
+})
+
+hl.animation({
+    leaf = "workspacesOut",
+    enabled = true,
+    speed = 4,
+    bezier = "smooth",
+    style = "slidefade 8%"
+})
 
 -- Ref https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 -- "Smart gaps" / "No gaps when only"
@@ -200,7 +266,21 @@ hl.config({
 -- See https://wiki.hypr.land/Configuring/Layouts/Scrolling-Layout/ for more
 hl.config({
     scrolling = {
-        fullscreen_on_one_column = true,
+        fullscreen_on_one_column = false,
+
+        -- default width for "normal" apps
+        column_width = 0.65,
+
+        follow_focus = true,
+        focus_fit_method = 1,
+
+        wrap_focus = true,
+        wrap_swapcol = true,
+
+        direction = "right",
+
+        explicit_column_widths =
+            "0.35, 0.5, 0.65, 0.8, 1.0",
     },
 })
 
@@ -270,7 +350,7 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("cliphist list| wofi --dmenu| cliphist decode| wl-copy"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.layout("togglesplit"))    -- dwindle only
+-- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("grim -t jpeg -q 100 -g $(slurp)-| swappy -f-"))
 hl.bind(mainMod .. " + o", hl.dsp.exec_cmd("hyprpicker| wl-copy"))
 
@@ -280,11 +360,15 @@ hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "r" }))
 hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "u" }))
 hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "d" }))
 
--- Move focus with mainMod + h,j,k,l
-hl.bind(mainMod .. " + h",  hl.dsp.focus({ direction = "l" }))
+-- Move focus with mainMod + h,j,k,l -- dwindle
+--[[hl.bind(mainMod .. " + h",  hl.dsp.focus({ direction = "l" }))
 hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "r" }))
 hl.bind(mainMod .. " + k",    hl.dsp.focus({ direction = "u" }))
-hl.bind(mainMod .. " + j",  hl.dsp.focus({ direction = "d" }))
+hl.bind(mainMod .. " + j",  hl.dsp.focus({ direction = "d" }))--]]
+
+-- Move focus with mainMod + h,j,k,l -- scrolling
+hl.bind(mainMod .. " + h",  hl.dsp.layout("focus l"))
+hl.bind(mainMod .. " + l", hl.dsp.layout("focus r"))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -312,27 +396,31 @@ hl.bind(mainMod .. " + ALT + l", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + ALT + left", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + ALT + right", hl.dsp.focus({ workspace = "e+1" }))
 
--- Move windows with keyboard
-hl.bind(mainMod .. " + SHIFT + h", hl.dsp.window.move({ direction = "l" }))
+-- Move windows with keyboard -- dwindle
+--[[hl.bind(mainMod .. " + SHIFT + h", hl.dsp.window.move({ direction = "l" }))
 hl.bind(mainMod .. " + SHIFT + l", hl.dsp.window.move({ direction = "r" }))
 hl.bind(mainMod .. " + SHIFT + k", hl.dsp.window.move({ direction = "u" }))
-hl.bind(mainMod .. " + SHIFT + j", hl.dsp.window.move({ direction = "d" }))
+hl.bind(mainMod .. " + SHIFT + j", hl.dsp.window.move({ direction = "d" }))--]]
+
+-- Move windows with keyboard
+hl.bind(mainMod .. " + SHIFT + h", hl.dsp.layout("swapcol l"))
+hl.bind(mainMod .. " + SHIFT + l", hl.dsp.layout("swapcol r"))
 
 -- Move windows to left/right workspace
 hl.bind(mainMod .. " + SHIFT + ALT + H", hl.dsp.window.move({ workspace = "e-1" }))
 hl.bind(mainMod .. " + SHIFT + ALT + L", hl.dsp.window.move({ workspace = "e+1" }))
 
--- Resize window with arrows
-hl.bind(mainMod .. " + CTRL + right", hl.dsp.window.resize({ x = 20,  y = 0,  relative = true }))
+-- Resize window with arrows - dwindle
+--[[hl.bind(mainMod .. " + CTRL + right", hl.dsp.window.resize({ x = 20,  y = 0,  relative = true }))
 hl.bind(mainMod .. " + CTRL + left",  hl.dsp.window.resize({ x = -20, y = 0,  relative = true }))
 hl.bind(mainMod .. " + CTRL + up",    hl.dsp.window.resize({ x = 0,   y = -20, relative = true }))
-hl.bind(mainMod .. " + CTRL + down",  hl.dsp.window.resize({ x = 0,   y = 20, relative = true }))
+hl.bind(mainMod .. " + CTRL + down",  hl.dsp.window.resize({ x = 0,   y = 20, relative = true }))--]]
 
--- Vim keys
-hl.bind(mainMod .. " + CTRL + l", hl.dsp.window.resize({ x = 20,  y = 0,  relative = true }))
+-- Vim keys - dwindle
+--[[hl.bind(mainMod .. " + CTRL + l", hl.dsp.window.resize({ x = 20,  y = 0,  relative = true }))
 hl.bind(mainMod .. " + CTRL + h", hl.dsp.window.resize({ x = -20, y = 0,  relative = true }))
 hl.bind(mainMod .. " + CTRL + k", hl.dsp.window.resize({ x = 0,   y = -20, relative = true }))
-hl.bind(mainMod .. " + CTRL + j", hl.dsp.window.resize({ x = 0,   y = 20, relative = true }))
+hl.bind(mainMod .. " + CTRL + j", hl.dsp.window.resize({ x = 0,   y = 20, relative = true }))--]]
 
 -- fullscreen
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
@@ -356,6 +444,22 @@ hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("swaync-client -t -sw"))
 
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("hyprctl dispatch centerwindow"))
+
+
+-- scrolling
+-- move view left/right
+hl.bind(mainMod .. " + comma", hl.dsp.layout("move -col"))
+hl.bind(mainMod .. " + period", hl.dsp.layout("move +col"))
+
+-- resize columns
+hl.bind(mainMod .. " + CTRL + h", hl.dsp.layout("colresize -0.05"))
+hl.bind(mainMod .. " + CTRL + l", hl.dsp.layout("colresize +0.05"))
+
+-- fit active window nicely
+hl.bind(mainMod .. " + Tab", hl.dsp.layout("fit active"))
+
+-- promote window into its own column
+hl.bind(mainMod .. " + P", hl.dsp.layout("promote"))
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
@@ -420,4 +524,39 @@ hl.window_rule({
 
     move  = "20 monitor_h-120",
     float = true,
+})
+
+-- Firefox full width
+hl.window_rule({
+    name = "firefox-width",
+    match = { class = "firefox" },
+    scrolling_width = 1.0,
+})
+
+-- VSCode full width
+hl.window_rule({
+    name = "vscode-width",
+    match = { class = "code" },
+    scrolling_width = 1.0,
+})
+
+-- Telegram full width
+hl.window_rule({
+    name = "telegram-width",
+    match = { class = "org.telegram.desktop" },
+    scrolling_width = 1.0,
+})
+
+-- Terminal medium width
+hl.window_rule({
+    name = "ghostty-width",
+    match = { class = "ghostty" },
+    scrolling_width = 0.65,
+})
+
+-- File manager medium width
+hl.window_rule({
+    name = "nautilus-width",
+    match = { class = "org.gnome.Nautilus" },
+    scrolling_width = 0.65,
 })
