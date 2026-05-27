@@ -47,6 +47,7 @@ hl.on("hyprland.start", function ()
   -- hl.exec_cmd("nm-applet")
   -- hl.exec_cmd("waybar & hyprpaper & firefox")
   hl.exec_cmd("waybar")
+  hl.exec_cmd("swaync")
   hl.exec_cmd("wl-paste --watch cliphist store")
 end)
 
@@ -360,8 +361,14 @@ hl.config({
 
 hl.gesture({
     fingers = 3,
-    direction = "horizontal",
+    direction = "vertical",
     action = "workspace"
+})
+
+hl.gesture({
+    fingers = 3,
+    direction = "horizontal",
+    action = "scroll_move",
 })
 
 -- Example per-device config

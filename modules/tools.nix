@@ -19,6 +19,7 @@
     foliate qbittorrent appimage-run
     waybar anyrun hyprpaper hyprlauncher
     slurp swappy grim wl-clipboard cliphist
+    swaynotificationcenter
   ];
 
   programs.zsh.enable = true;
