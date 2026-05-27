@@ -19,7 +19,7 @@
     foliate qbittorrent appimage-run
     waybar anyrun hyprpaper hyprlauncher
     slurp swappy grim wl-clipboard cliphist
-    swaynotificationcenter hyprpaper
+    swaynotificationcenter hyprpaper obs-studio
   ];
 
   programs.zsh.enable = true;

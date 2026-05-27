@@ -628,8 +628,9 @@ hl.window_rule({
 -- Terminal medium width
 hl.window_rule({
     name = "ghostty-width",
-    match = { class = "ghostty" },
+    match = { class = "com.mitchellh.ghostty" },
     scrolling_width = 0.65,
+    opacity = "0.85 0.75",
 })
 
 -- File manager medium width
