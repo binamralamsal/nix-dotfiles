@@ -438,8 +438,17 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 local function workspace_next()
     local current = hl.get_active_workspace()
     local current_id = tonumber(current.id)
+    local max_id = 0
+    local workspaces = hl.get_workspaces()
+    for _, ws in ipairs(workspaces) do
+        local id = tonumber(ws.id)
+        if id > 0 and id > max_id then
+            max_id = id
+        end
+    end
     local windows = hl.get_workspace_windows(current.id)
-    if #windows > 0 then
+    -- go next if: current has windows (may create new), or there are workspaces ahead
+    if #windows > 0 or current_id < max_id then
         hl.dispatch(hl.dsp.focus({ workspace = current.id + 1 }))
     end
 end

@@ -18,6 +18,7 @@
     telegram-desktop anydesk vscode
     foliate qbittorrent appimage-run
     waybar anyrun hyprpaper hyprlauncher
+    slurp swappy grim
   ];
 
   programs.zsh.enable = true;
