@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -20,6 +20,7 @@
     waybar anyrun hyprpaper hyprlauncher
     slurp swappy grim wl-clipboard cliphist
     swaynotificationcenter
+    inputs.hyprpaper.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   programs.zsh.enable = true;

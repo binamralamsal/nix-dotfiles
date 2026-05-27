@@ -7,6 +7,12 @@
     
     hyprland.url = "github:hyprwm/Hyprland";
 
+
+    hyprpaper = {
+      url = "github:hyprwm/hyprpaper";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager.url =
       "github:nix-community/home-manager/release-25.11";
 
@@ -24,7 +30,7 @@
     nixosConfigurations.binamra =
       nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; };   # <-- add this
+        specialArgs = { inherit inputs; };
         modules = [
           nur.modules.nixos.default
           ./hosts/binamra/configuration.nix
