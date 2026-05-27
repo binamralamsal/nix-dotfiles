@@ -47,6 +47,7 @@ hl.on("hyprland.start", function ()
   -- hl.exec_cmd("nm-applet")
   -- hl.exec_cmd("waybar & hyprpaper & firefox")
   hl.exec_cmd("waybar")
+  hl.exec_cmd("wl-paste --watch cliphist store")
 end)
 
 
@@ -390,7 +391,7 @@ hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("cliphist list| wofi --dmenu| cliphis
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 -- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.layout("togglesplit"))    -- dwindle only
-hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("grim -t jpeg -q 100 -g $(slurp)-| swappy -f-"))
+hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | swappy -f -"))
 hl.bind(mainMod .. " + o", hl.dsp.exec_cmd("hyprpicker| wl-copy"))
 
 -- Move focus with mainMod + arrow keys
