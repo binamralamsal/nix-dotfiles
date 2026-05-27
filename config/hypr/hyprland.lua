@@ -52,6 +52,7 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("swayosd-server")
   hl.exec_cmd("vicinae server")
   hl.exec_cmd("ibus start")
+  hl.exec_cmd("nm-applet --indicator")
   hl.exec_cmd("wl-paste --watch cliphist store")
 end)
 

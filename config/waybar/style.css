@@ -17,12 +17,18 @@ window#waybar {
 #pulseaudio,
 #backlight,
 #taskbar,
+#workspaces,
 #tray {
   background: black;
-  padding: 0.5em 0.75em;
+  padding: 0.5em 1em;
   border-radius: 0.5em;
   opacity: 0.75;
   margin-top: 1em;
+}
+
+#workspaces {
+  margin-left: 0.5em;
+  padding: 0.2em;
 }
 
 #taskbar {
@@ -46,8 +52,8 @@ window#waybar {
 
 #custom-launch_wofi {
   margin-left: 1em;
-  padding-right: 1.15em;
   margin-right: 0.5em;
+  padding-right: 1.35em;
 }
 
 #custom-power_btn {
@@ -77,4 +83,36 @@ window#waybar {
 
 #pulseaudio.microphone {
   border-radius: 0 0.5em 0.5em 0;
+}
+
+#workspaces button {
+    padding: 1px 0.25em;
+    color: #313244;
+}
+
+#workspaces button:not(:last-child) {
+    margin-right: 0.2em;
+}
+
+#workspaces button.active {
+    color: #a6adc8;
+    background: #11111b;
+}
+
+#workspaces button.focused {
+    color: #a6adc8;
+    background: #eba0ac;
+    border-radius: 10px;
+}
+
+#workspaces button.urgent {
+    color: #11111b;
+    background: #a6e3a1;
+    border-radius: 10px;
+}
+
+#workspaces button:hover {
+    background: #11111b;
+    color: #cdd6f4;
+    border-radius: 10px;
 }

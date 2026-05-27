@@ -5,7 +5,7 @@
   "exclusive": true,
   "passthrough": false,
   "gtk-layer-shell": true,
-  "modules-left": ["custom/launch_wofi", "wlr/taskbar"],
+  "modules-left": ["custom/launch_wofi", "wlr/taskbar", "hyprland/workspaces"],
   "modules-center": ["clock"],
   "modules-right": [
     "tray",
