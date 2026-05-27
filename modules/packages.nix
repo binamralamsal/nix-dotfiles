@@ -50,7 +50,7 @@
     waybar
     anyrun
     hyprpaper
-    hyprlauncher
+    wofi
     swaynotificationcenter
 
     # screenshots / clipboard
