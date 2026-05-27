@@ -18,8 +18,8 @@
   ],
 
   "custom/launch_wofi": {
-    "format": "",
-    "on-click": "wofi",
+    "format": "",
+    "on-click": "vicinae open",
     "tooltip": false,
   },
 
@@ -61,8 +61,8 @@
     "device": "intel_backlight",
     "format": "{icon} {percent}%",
     "format-icons": ["󰃞", "󰃟", "󰃠"],
-    "on-scroll-up": "~/.config/waybar/scripts/brightness --inc",
-    "on-scroll-down": "~/.config/waybar/scripts/brightness --dec",
+    "on-scroll-up": "~/dotfiles/config/scripts/brightness --inc",
+    "on-scroll-down": "~/dotfiles/config/scripts/brightness --dec",
     "min-length": 6,
   },
 
@@ -82,10 +82,10 @@
   "pulseaudio": {
     "format": "{icon} {volume}%",
     "format-muted": "",
-    "on-click": "~/.config/waybar/scripts/volume --toggle",
+    "on-click": "~/dotfiles/config/scripts/volume --toggle",
     "on-click-right": "pavucontrol",
-    "on-scroll-up": "~/.config/waybar/scripts/volume --inc",
-    "on-scroll-down": "~/.config/waybar/scripts/volume --dec",
+    "on-scroll-up": "~/dotfiles/config/scripts/volume --inc",
+    "on-scroll-down": "~/dotfiles/config/scripts/volume --dec",
     "scroll-step": 5,
     "format-icons": {
       "headphone": "",
@@ -102,10 +102,10 @@
     "format": "{format_source}",
     "format-source": " {volume}%",
     "format-source-muted": "",
-    "on-click": "~/.config/waybar/scripts/volume --toggle-mic",
+    "on-click": "~/dotfiles/config/scripts/volume --toggle-mic",
     "on-click-right": "pavucontrol",
-    "on-scroll-up": "~/.config/waybar/scripts/volume --mic-inc",
-    "on-scroll-down": "~/.config/waybar/scripts/volume --mic-dec",
+    "on-scroll-up": "~/dotfiles/config/scripts/volume --mic-inc",
+    "on-scroll-down": "~/dotfiles/config/scripts/volume --mic-dec",
     "scroll-step": 5,
   },
 }

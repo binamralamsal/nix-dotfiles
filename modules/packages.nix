@@ -16,6 +16,7 @@
     pamixer
     brightnessctl
     libnotify
+    networkmanagerapplet
 
     # =========================
     # Terminal / CLI tools
@@ -80,6 +81,7 @@
   ];
 
   programs.zsh.enable = true;
+  programs.nm-applet.enable = true;
 
   programs.neovim = {
     enable = true;

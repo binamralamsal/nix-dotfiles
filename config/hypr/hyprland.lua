@@ -544,51 +544,41 @@ hl.bind(mainMod .. " + Tab", hl.dsp.layout("fit active"))
 hl.bind(mainMod .. " + P", hl.dsp.layout("promote"))
 
 -- Laptop multimedia keys for volume and LCD brightness
+local scripts = os.getenv("HOME") .. "/dotfiles/config/scripts"
+
 hl.bind(
   "XF86AudioRaiseVolume",
-  hl.dsp.exec_cmd(
-    "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && swayosd-client --output-volume raise"
-  ),
+  hl.dsp.exec_cmd(scripts .. "/volume --inc"),
   { locked = true, repeating = true }
 )
 
 hl.bind(
   "XF86AudioLowerVolume",
-  hl.dsp.exec_cmd(
-    "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && swayosd-client --output-volume lower"
-  ),
+  hl.dsp.exec_cmd(scripts .. "/volume --dec"),
   { locked = true, repeating = true }
 )
 
 hl.bind(
   "XF86AudioMute",
-  hl.dsp.exec_cmd(
-    "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && swayosd-client --output-volume mute-toggle"
-  ),
+  hl.dsp.exec_cmd(scripts .. "/volume --toggle"),
   { locked = true, repeating = true }
 )
 
 hl.bind(
   "XF86AudioMicMute",
-  hl.dsp.exec_cmd(
-    "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && swayosd-client --input-volume mute-toggle"
-  ),
+  hl.dsp.exec_cmd(scripts .. "/volume --toggle-mic"),
   { locked = true, repeating = true }
 )
 
 hl.bind(
   "XF86MonBrightnessUp",
-  hl.dsp.exec_cmd(
-    "brightnessctl -e4 -n2 set 5%+ && swayosd-client --brightness raise"
-  ),
+  hl.dsp.exec_cmd(scripts .. "/brightness --inc"),
   { locked = true, repeating = true }
 )
 
 hl.bind(
   "XF86MonBrightnessDown",
-  hl.dsp.exec_cmd(
-    "brightnessctl -e4 -n2 set 5%- && swayosd-client --brightness lower"
-  ),
+  hl.dsp.exec_cmd(scripts .. "/brightness --dec"),
   { locked = true, repeating = true }
 )
 
