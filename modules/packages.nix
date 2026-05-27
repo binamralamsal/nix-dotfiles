@@ -58,7 +58,6 @@
     swayosd
     vicinae
     wlogout
-    swaylock
 
     # screenshots / clipboard
     grim
