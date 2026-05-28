@@ -39,5 +39,13 @@
     ibus.engines = with pkgs.ibus-engines; [ mozc ];
   };
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
+  nix.optimise.automatic = true;
+
   system.stateVersion = "25.11";
 }
