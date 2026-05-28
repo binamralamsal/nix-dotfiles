@@ -58,6 +58,7 @@
     swayosd
     vicinae
     wlogout
+    hyprcursor
 
     # screenshots / clipboard
     grim

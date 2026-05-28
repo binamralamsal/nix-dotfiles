@@ -26,5 +26,15 @@ in
     source = symlink "${dotfiles}/${subpath}";
   }) configs;
 
+
+  home.pointerCursor = {
+    gtk.enable = true;
+    x11.enable = true;
+
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Amber";
+    size = 24;
+  };
+
   home.stateVersion = "25.11";
 }

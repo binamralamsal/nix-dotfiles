@@ -19,7 +19,7 @@
 
   "custom/launch_wofi": {
     "format": "",
-    "on-click": "vicinae open",
+    "on-click": "vicinae vicinae://toggle",
     "tooltip": false,
   },
 
