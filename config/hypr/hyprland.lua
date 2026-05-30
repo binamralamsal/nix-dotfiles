@@ -356,7 +356,7 @@ hl.config({
         kb_options = "",
         kb_rules   = "",
 
-        follow_mouse = 1,
+        follow_mouse = 0,
 
         sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
 
@@ -659,8 +659,11 @@ hl.window_rule({
 -- Window Rules
 hl.window_rule({ name  = "move-hyprland-run", match = { class = "hyprland-run" }, move  = "20 monitor_h-120", float = true, })
 hl.window_rule({ name = "firefox-width", match = { class = "firefox" }, scrolling_width = 1.0, })
+hl.window_rule({ name = "helium-width", match = { class = "helium" }, scrolling_width = 1.0, })
 hl.window_rule({ name = "vscode-width", match = { class = "Code" }, scrolling_width = 1.0, opacity = "0.9" })
 hl.window_rule({ name = "telegram-width", match = { class = "org.telegram.desktop" }, scrolling_width = 1.0, opacity="0.9" })
 hl.window_rule({ name = "ghostty-width", match = { class = "com.mitchellh.ghostty" }, scrolling_width = 0.65, opacity = "0.85 0.75", })
 hl.window_rule({ name = "nautilus-width", match = { class = "org.gnome.Nautilus" }, scrolling_width = 0.65, })
 hl.workspace_rule({ workspace = "special:magic", gaps_out = { top = 70, bottom = 70, left = 50, right = 50 }, })
+hl.window_rule({ name  = "helium-crx-float", match = { class = "^chrome-.*-Default$" }, float = true, })
+hl.window_rule({ name  = "helium-popup-float", match = { class = "helium", initial_title = "^Untitled - Helium$", }, float = true, })

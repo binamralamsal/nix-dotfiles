@@ -6,6 +6,7 @@
 
     ./modules/system.nix
     ./modules/packages.nix
+    ./modules/flatpak.nix
   ];
 
   networking.hostName = "binamra";

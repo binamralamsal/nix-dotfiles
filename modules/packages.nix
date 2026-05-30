@@ -77,7 +77,7 @@
     obs-studio
     anydesk
     appimage-run
-    helium
+    inputs.helium-flake.packages.${pkgs.system}.helium
   ];
 
   programs.zsh.enable = true;

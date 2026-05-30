@@ -12,6 +12,7 @@
 
     helium-flake.url = "github:oxcl/nix-flake-helium-browser";
     helium-flake.inputs.nixpkgs.follows = "nixpkgs";
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
     nur = {
       url = "github:nix-community/NUR";
@@ -27,6 +28,7 @@
       nur,
       hyprland,
       helium-flake,
+      nix-flatpak,
       ...
     }@inputs:
     {
@@ -35,6 +37,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           nur.modules.nixos.default
+	  nix-flatpak.nixosModules.nix-flatpak
 	  {
             nixpkgs.overlays = [
               helium-flake.overlays.default
