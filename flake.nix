@@ -10,6 +10,9 @@
 
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    helium-flake.url = "github:oxcl/nix-flake-helium-browser";
+    helium-flake.inputs.nixpkgs.follows = "nixpkgs";
+
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,6 +26,7 @@
       home-manager,
       nur,
       hyprland,
+      helium-flake,
       ...
     }@inputs:
     {
@@ -31,6 +35,11 @@
         specialArgs = { inherit inputs; };
         modules = [
           nur.modules.nixos.default
+	  {
+            nixpkgs.overlays = [
+              helium-flake.overlays.default
+            ];
+          }
           ./configuration.nix
           home-manager.nixosModules.home-manager
           {

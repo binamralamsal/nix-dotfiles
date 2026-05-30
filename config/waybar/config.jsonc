@@ -27,8 +27,8 @@
     "disable-scroll": false,
     "all-outputs": true,
     "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"{id}\" })'",
-    "on-scroll-up": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e+1\" })'",
-    "on-scroll-down": "hyprctl dispatch 'hl.dsp.focus({ workspace = \"e-1\" })'"
+    "on-scroll-up": "~/dotfiles/config/scripts/workspace-next",
+    "on-scroll-down": "~/dotfiles/config/scripts/workspace-prev",
 },
 
   "custom/lock_screen": {
@@ -52,7 +52,7 @@
     // "all-outputs": true,
     "format": "{icon}",
     "tooltip-format": "{title} | {app_id}",
-    "on-click": "activate",
+    "on-click": "minimize-raise",
     "on-click-middle": "close",
     "on-click-right": "fullscreen",
     "height": "10",

@@ -493,8 +493,33 @@ hl.bind(mainMod .. " + SHIFT + h", hl.dsp.layout("swapcol l"))
 hl.bind(mainMod .. " + SHIFT + l", hl.dsp.layout("swapcol r"))
 
 -- Move windows to left/right workspace
-hl.bind(mainMod .. " + SHIFT + U", hl.dsp.window.move({ workspace = "e-1" }))
-hl.bind(mainMod .. " + SHIFT + I", hl.dsp.window.move({ workspace = "e+1" }))
+local function window_workspace_next()
+    local current = hl.get_active_workspace()
+    local current_id = tonumber(current.id)
+    local max_id = 0
+    local workspaces = hl.get_workspaces()
+    for _, ws in ipairs(workspaces) do
+        local id = tonumber(ws.id)
+        if id > 0 and id > max_id then
+            max_id = id
+        end
+    end
+    local windows = hl.get_workspace_windows(current.id)
+    -- go next if: current has windows (may create new), or there are workspaces ahead
+    if #windows > 1 or current_id < max_id then
+	hl.dispatch(hl.dsp.window.move({ workspace = current.id + 1 }))
+    end
+end
+
+local function window_workspace_prev()
+    local current = hl.get_active_workspace()
+    local current_id = tonumber(current.id)
+    if current_id > 1 then
+        hl.dispatch(hl.dsp.window.move({ workspace = current.id - 1 }))
+    end
+end
+hl.bind(mainMod .. " + SHIFT + U", window_workspace_next)
+hl.bind(mainMod .. " + SHIFT + I", window_workspace_prev)
 
 -- Resize window with arrows - dwindle
 --[[hl.bind(mainMod .. " + CTRL + right", hl.dsp.window.resize({ x = 20,  y = 0,  relative = true }))
@@ -542,7 +567,7 @@ hl.bind(mainMod .. " + CTRL + l", hl.dsp.layout("colresize +0.05"))
 hl.bind(mainMod .. " + Tab", hl.dsp.layout("fit active"))
 
 -- promote window into its own column
-hl.bind(mainMod .. " + P", hl.dsp.layout("promote"))
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.layout("promote"))
 
 -- Laptop multimedia keys for volume and LCD brightness
 local scripts = os.getenv("HOME") .. "/dotfiles/config/scripts"

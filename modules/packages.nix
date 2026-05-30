@@ -77,11 +77,12 @@
     obs-studio
     anydesk
     appimage-run
-    brave # just because helium isn't available
+    helium
   ];
 
   programs.zsh.enable = true;
   programs.nm-applet.enable = true;
+  services.cloudflare-warp.enable = true;
 
   programs.neovim = {
     enable = true;
