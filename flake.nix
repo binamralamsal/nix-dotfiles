@@ -2,11 +2,9 @@
   description = "Binamra NixOS config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
-    hyprland.url = "github:hyprwm/Hyprland";
-
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager";
 
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -26,7 +24,6 @@
       nixpkgs,
       home-manager,
       nur,
-      hyprland,
       helium-flake,
       nix-flatpak,
       ...
