@@ -65,11 +65,11 @@
     hypridle
 
     # screenshots / clipboard
-    grim
-    slurp
     swappy
     wl-clipboard
     cliphist
+    hyprshot
+    satty
 
     # =========================
     # GUI Applications

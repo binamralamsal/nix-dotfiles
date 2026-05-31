@@ -409,7 +409,7 @@ hl.bind(mainMod .. " + semicolon", hl.dsp.exec_cmd("vicinae 'vicinae://launch/co
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 -- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.layout("togglesplit"))    -- dwindle only
-hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | swappy -f -"))
+-- hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("grim -g \"$(slurp)\" - | swappy -f -"))
 hl.bind(mainMod .. " + o", hl.dsp.exec_cmd("hyprpicker| wl-copy"))
 
 -- Move focus with mainMod + arrow keys
@@ -548,6 +548,7 @@ hl.bind("CTRL + SHIFT + G", hl.dsp.window.move({ out_of_group = true }))
 hl.bind(mainMod .. " + SHIFT + G", hl.dsp.group.lock_active())
 hl.bind("SHIFT + ALT + J", hl.dsp.group.move_window({ direction = "d" }))
 hl.bind("SHIFT + ALT + k", hl.dsp.group.move_window({ direction = "u" })) hl.bind("SHIFT + ALT + l", hl.dsp.group.move_window({ direction = "r" })) hl.bind("SHIFT + ALT + h", hl.dsp.group.move_window({ direction = "l" }))
+
 -- toggle waybar
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
 
@@ -571,6 +572,28 @@ hl.bind(mainMod .. " + Tab", hl.dsp.layout("fit active"))
 
 -- promote window into its own column
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.layout("promote"))
+
+-- Screenshots (hyprshot + satty)
+local screenshots_dir = os.getenv("HOME") .. "/Pictures/Screenshots"
+
+-- Print → fullscreen of active monitor, saved to disk + clipboard
+hl.bind("Print", hl.dsp.exec_cmd(
+    "hyprshot -m output -m active -o " .. screenshots_dir .. " -z"
+))
+
+-- SUPER + Print → active window, saved to disk + clipboard
+hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd(
+    "hyprshot -m window -m active -o " .. screenshots_dir .. " -z"
+))
+
+-- SUPER + SHIFT + S → region select, pipe raw output into satty for annotation
+-- satty saves the annotated result to disk and copies to clipboard
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(
+    "sh -c 'mkdir -p " .. screenshots_dir .. " && hyprshot -m region -z --raw | satty --filename -" ..
+    " --copy-command wl-copy --save-after-copy" ..
+    " --actions-on-enter save-to-clipboard,exit" ..
+    " --output-filename \"" .. screenshots_dir .. "/%Y-%m-%d_%H-%M-%S.png\"'"
+))
 
 -- Laptop multimedia keys for volume and LCD brightness
 local scripts = os.getenv("HOME") .. "/dotfiles/config/scripts"
@@ -672,3 +695,4 @@ hl.workspace_rule({ workspace = "special:magic", gaps_out = { top = 70, bottom =
 hl.window_rule({ name = "helium-crx-float", match = { class = "^chrome-.*-Default$" }, float = true, })
 hl.window_rule({ name = "helium-popup-float", match = { class = "helium", initial_title = "^Untitled - Helium$", }, float = true, })
 hl.window_rule({ name = "picture-in-picture-float", match = { title = "^Picture in picture$" }, float = true, pin = true, })
+hl.window_rule({ name = "satty-float", match = { class = "com.gabm.satty" }, float = true })
