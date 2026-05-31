@@ -2,6 +2,7 @@
 <img width="1920" height="1080" alt="Layout" src="https://github.com/user-attachments/assets/d71a186c-d21c-4f43-8053-a08651598556" />
 A modular, reproducible NixOS configuration powered by flakes, Home Manager, and Hyprland.
 This repository contains my personal desktop and development environment with a focus on a clean workflow, modern Wayland tooling, and declarative configuration.
+
 ## Features
 - Flake-based NixOS configuration
 - Modular system structure
@@ -11,6 +12,7 @@ This repository contains my personal desktop and development environment with a 
 - Declarative shell, terminal, browser, and desktop configuration
 - PostgreSQL, MariaDB, and Redis services
 - Flatpak support
+
 ## Desktop Overview
 | Component | Application |
 |------------|-------------|
@@ -29,6 +31,7 @@ This repository contains my personal desktop and development environment with a 
 | Clipboard History | Cliphist |
 | Screenshot Tool | Grim + Slurp + Swappy |
 | Input Method | IBus + Mozc |
+
 ## Development Environment
 | Category | Tools |
 |----------|-------|
@@ -40,6 +43,7 @@ This repository contains my personal desktop and development environment with a 
 | Rust | rustup |
 | Git | Git, GitHub CLI |
 | Databases | PostgreSQL, MariaDB, Redis |
+
 ## CLI Utilities
 | Tool | Purpose |
 |------|---------|
@@ -51,6 +55,7 @@ This repository contains my personal desktop and development environment with a 
 | FD | Fast file finder |
 | Yazi | Terminal file manager |
 | Lazygit | Git UI |
+
 ## Repository Structure
 ```txt
 ├── assets/                     # Wallpapers and static assets
@@ -72,6 +77,7 @@ This repository contains my personal desktop and development environment with a 
 ├── home.nix                   # Home Manager entrypoint
 └── flake.nix                  # Flake definition
 ```
+
 ## Installation
 Clone the repository:
 ```bash
@@ -82,6 +88,7 @@ Rebuild the system:
 ```bash
 sudo nixos-rebuild switch --flake .#binamra
 ```
+
 ## Hardware Configuration
 `hardware-configuration.nix` is machine-specific and should be regenerated for your hardware.
 Generate a new hardware configuration:
@@ -99,11 +106,14 @@ If using this repository on another machine:
 ```bash
 sudo nixos-rebuild switch --flake .#binamra
 ```
+
 ## System Workflow
+
 ### Rebuild
 ```bash
 sudo nixos-rebuild switch --flake .#binamra
 ```
+
 ### Update inputs
 ```bash
 nix flake update
@@ -112,10 +122,12 @@ Apply updates:
 ```bash
 sudo nixos-rebuild switch --flake .#binamra
 ```
+
 ### Garbage collection
 ```bash
 nix-collect-garbage -d
 ```
+
 ## Customization
 Before using this configuration, you will likely want to update:
 - Username
