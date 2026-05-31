@@ -15,6 +15,7 @@ in
   home.homeDirectory = "/home/binamra";
   home.sessionVariables = {
     LD_LIBRARY_PATH = "/run/current-system/sw/share/nix-ld/lib";
+    QT_QPA_PLATFORMTHEME = "gtk3";
   };
 
   imports = [

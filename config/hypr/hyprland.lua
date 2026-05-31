@@ -71,6 +71,7 @@ hl.env("IBUS_USE_PORTAL", "1")
 
 hl.env("GTK_IM_MODULE", "")
 hl.env("QT_IM_MODULE", "")
+hl.env("QT_QPA_PLATFORMTHEME", "gtk3")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -588,7 +589,7 @@ hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd(
 
 -- SUPER + SHIFT + S → region select, pipe raw output into satty for annotation
 -- satty saves the annotated result to disk and copies to clipboard
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(
+hl.bind(mainMod .. " + S", hl.dsp.exec_cmd(
     "sh -c 'mkdir -p " .. screenshots_dir .. " && hyprshot -m region -z --raw | satty --filename -" ..
     " --copy-command wl-copy --save-after-copy" ..
     " --actions-on-enter save-to-clipboard,exit" ..
