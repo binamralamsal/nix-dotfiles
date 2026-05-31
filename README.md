@@ -138,8 +138,5 @@ Before using this configuration, you will likely want to update:
 - Browser preferences
 - Package selection
 
----
-
 ## License
-
 MIT
