@@ -57,11 +57,15 @@
     "height": "10",
     "icon-size": 14,
     "spacing": 10,
+    "on-scroll-up": "~/dotfiles/config/scripts/workspace-prev",
+    "on-scroll-down": "~/dotfiles/config/scripts/workspace-next",
   },
 
   "clock": {
     "format": "{:%A, %B %d, %Y (%I:%M %p)}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "on-scroll-up": "~/dotfiles/config/scripts/workspace-prev",
+    "on-scroll-down": "~/dotfiles/config/scripts/workspace-next",
   },
 
   "backlight": {
