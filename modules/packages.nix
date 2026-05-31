@@ -95,4 +95,27 @@
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
+
+  services.postgresql = {
+    enable = true;
+
+    ensureDatabases = [ "binamra" ];
+
+    ensureUsers = [
+      {
+        name = "binamra";
+        ensureDBOwnership = true;
+        ensureClauses = {
+          superuser = true;
+          createrole = true;
+          createdb = true;
+          login = true;
+        };
+      }
+    ];
+
+    initialScript = pkgs.writeText "postgres-init.sql" ''
+      ALTER USER binamra WITH PASSWORD '1234';
+    '';
+  };
 }
