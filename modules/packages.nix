@@ -17,6 +17,7 @@
     brightnessctl
     libnotify
     networkmanagerapplet
+    stdenv.cc.cc
 
     # =========================
     # Terminal / CLI tools

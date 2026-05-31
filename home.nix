@@ -13,6 +13,9 @@ in
 {
   home.username = "binamra";
   home.homeDirectory = "/home/binamra";
+  home.sessionVariables = {
+    LD_LIBRARY_PATH = "/run/current-system/sw/share/nix-ld/lib";
+  };
 
   imports = [
     ./config/zsh.nix
