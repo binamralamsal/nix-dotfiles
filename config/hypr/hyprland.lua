@@ -53,7 +53,6 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("vicinae server")
   hl.exec_cmd("ibus start")
   hl.exec_cmd("nm-applet --indicator")
-  hl.exec_cmd("wl-paste --watch cliphist store")
 end)
 
 
@@ -404,8 +403,8 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("wlogout --protocol layer-shell"))
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("vicinae vicinae://extensions/vicinae/clipboard/history?toggle=true"))
-hl.bind(mainMod .. " + semicolon", hl.dsp.exec_cmd("vicinae vicinae://extensions/vicinae/vicinae/search-emojis?toggle=true"))
+hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("vicinae 'vicinae://launch/clipboard/history?toggle=true'"))
+hl.bind(mainMod .. " + semicolon", hl.dsp.exec_cmd("vicinae 'vicinae://launch/core/search-emojis?toggle=true'"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 -- hl.bind(mainMod .. " + SHIFT + S", hl.dsp.layout("togglesplit"))    -- dwindle only
