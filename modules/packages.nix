@@ -96,26 +96,37 @@
     nerd-fonts.jetbrains-mono
   ];
 
+  services.redis.servers.default = {
+    enable = true;
+    port = 6379;
+  };
+
   services.postgresql = {
     enable = true;
+    enableTCPIP = true;
 
     ensureDatabases = [ "binamra" ];
+
+    authentication = pkgs.lib.mkOverride 10 ''
+      local all all trust
+      host all all 127.0.0.1/32 scram-sha-256
+      host all all ::1/128 scram-sha-256
+    '';
 
     ensureUsers = [
       {
         name = "binamra";
         ensureDBOwnership = true;
+
         ensureClauses = {
-          superuser = true;
-          createrole = true;
-          createdb = true;
           login = true;
+          superuser = true;
+          createdb = true;
+          createrole = true;
+
+          password = "SCRAM-SHA-256$4096:eTz+mvODp/4SGRmCWFV37w==$KVWAGUXd/Y1X0EupY1peVXrhUq/KM7a1ZVXolCnLHbc=:Jwtzd8byds0osVBCnpu66QlrGAqBU5jtqHfXWGl752s=";
         };
       }
     ];
-
-    initialScript = pkgs.writeText "postgres-init.sql" ''
-      ALTER USER binamra WITH PASSWORD '1234';
-    '';
   };
 }
