@@ -59,6 +59,7 @@
     vicinae
     wlogout
     hyprcursor
+    hyprpicker
 
     # screenshots / clipboard
     grim
