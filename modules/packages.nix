@@ -129,4 +129,23 @@
       }
     ];
   };
+
+  services.mysql = {
+    enable = true;
+    package = pkgs.mariadb;
+  
+    initialScript = pkgs.writeText "mysql-init.sql" ''
+      CREATE DATABASE IF NOT EXISTS binamra;
+  
+      CREATE USER IF NOT EXISTS 'binamra'@'localhost'
+      IDENTIFIED BY '1234';
+  
+      GRANT ALL PRIVILEGES
+      ON *.*
+      TO 'binamra'@'localhost'
+      WITH GRANT OPTION;
+  
+      FLUSH PRIVILEGES;
+    '';
+  };
 }
