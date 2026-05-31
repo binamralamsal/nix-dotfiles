@@ -51,7 +51,7 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("swaync")
   hl.exec_cmd("swayosd-server")
   hl.exec_cmd("vicinae server")
-  hl.exec_cmd("ibus-daemon --panel=disable --xim -d -r")
+  hl.exec_cmd("ibus start")
   hl.exec_cmd("nm-applet --indicator")
   hl.exec_cmd("wl-paste --watch cliphist store")
 end)
@@ -65,9 +65,12 @@ end)
 
 hl.env("XCURSOR_SIZE", 24)
 hl.env("HYPRCURSOR_SIZE", 24)
+
 hl.env("XMODIFIERS", "@im=ibus")
 hl.env("IBUS_USE_PORTAL", "1")
 
+hl.env("GTK_IM_MODULE", "")
+hl.env("QT_IM_MODULE", "")
 
 -----------------------
 ----- PERMISSIONS -----

@@ -46,6 +46,9 @@
       # zoxide
       eval "$(zoxide init zsh)"
 
+      # fzf
+      source <(fzf --zsh)
+
       # Yazi cd integration
       function y() {
         local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
