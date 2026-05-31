@@ -5,7 +5,7 @@
     enable = true;
 
     settings = {
-      theme = "Xcode Dark hc";
+      theme = "Catppuccin Mocha";
 
       font-family = "JetBrainsMono Nerd Font";
 

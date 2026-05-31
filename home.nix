@@ -23,6 +23,7 @@ in
     ./config/firefox.nix
     ./config/ghostty.nix
     ./config/swaylock.nix
+    ./config/tmux.nix
   ];
 
   xdg.configFile = builtins.mapAttrs (_: subpath: {
