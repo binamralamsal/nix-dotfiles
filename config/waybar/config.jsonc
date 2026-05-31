@@ -26,8 +26,8 @@
 "hyprland/workspaces": {
     "disable-scroll": false,
     "all-outputs": true,
-    "on-scroll-up": "~/dotfiles/config/scripts/workspace-next",
-    "on-scroll-down": "~/dotfiles/config/scripts/workspace-prev",
+    "on-scroll-up": "~/dotfiles/config/scripts/workspace-prev",
+    "on-scroll-down": "~/dotfiles/config/scripts/workspace-next",
 },
 
   "custom/lock_screen": {

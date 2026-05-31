@@ -48,6 +48,7 @@
     bun
     nixfmt
     lua-language-server
+    rustup
 
     # =========================
     # Hyprland / Wayland
@@ -83,6 +84,7 @@
 
   programs.zsh.enable = true;
   programs.nm-applet.enable = true;
+  programs.nix-ld.enable = true;
   services.cloudflare-warp.enable = true;
 
   programs.neovim = {
