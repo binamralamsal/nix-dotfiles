@@ -62,6 +62,7 @@
     wlogout
     hyprcursor
     hyprpicker
+    hypridle
 
     # screenshots / clipboard
     grim

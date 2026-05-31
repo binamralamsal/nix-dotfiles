@@ -53,6 +53,7 @@ hl.on("hyprland.start", function ()
   hl.exec_cmd("vicinae server")
   hl.exec_cmd("ibus start")
   hl.exec_cmd("nm-applet --indicator")
+  hl.exec_cmd("hypridle")
 end)
 
 
