@@ -28,7 +28,7 @@ This repository contains my personal desktop and development environment with a 
 | Wallpaper Manager | Hyprpaper |
 | Browser | Firefox + Helium |
 | File Manager | Nautilus |
-| Clipboard History | Cliphist |
+| Clipboard History | Vicinae |
 | Screenshot Tool | Grim + Slurp + Swappy |
 | Input Method | IBus + Mozc |
 
