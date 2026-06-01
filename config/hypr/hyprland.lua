@@ -555,6 +555,19 @@ hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("pkill -SIGUSR1 waybar"))
 
 -- swaync
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("swaync-client -t -sw"))
+hl.bind(mainMod .. " + SHIFT + D", function()
+    local handle = io.popen("swaync-client -D")
+    local enabled = handle:read("*a"):gsub("%s+", "")
+    handle:close()
+
+    hl.exec_cmd("swaync-client -d")
+
+    if enabled == "true" then
+        hl.exec_cmd([[swayosd-client --custom-message "󰂚  Notifications On"]])
+    else
+        hl.exec_cmd([[swayosd-client --custom-message "󰂛  Do Not Disturb"]])
+    end
+end)
 
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("hyprctl dispatch centerwindow"))
 
