@@ -71,7 +71,10 @@ hl.env("IBUS_USE_PORTAL", "1")
 
 hl.env("GTK_IM_MODULE", "")
 hl.env("QT_IM_MODULE", "")
+
+-- fix for file picker and obs
 hl.env("QT_QPA_PLATFORMTHEME", "gtk3")
+hl.env("QT_QPA_PLATFORM", "wayland")
 
 -----------------------
 ----- PERMISSIONS -----
