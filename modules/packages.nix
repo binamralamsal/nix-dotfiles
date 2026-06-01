@@ -18,6 +18,9 @@
     libnotify
     networkmanagerapplet
     stdenv.cc.cc
+    ffmpegthumbnailer
+    gst_all_1.gst-libav
+
 
     # =========================
     # Terminal / CLI tools

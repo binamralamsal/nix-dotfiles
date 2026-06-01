@@ -563,9 +563,25 @@ hl.bind(mainMod .. " + SHIFT + D", function()
     hl.exec_cmd("swaync-client -d")
 
     if enabled == "true" then
-        hl.exec_cmd([[swayosd-client --custom-message "󰂚  Notifications On"]])
+        hl.exec_cmd([[swayosd-client --custom-message "󰂚   Notifications On"]])
     else
-        hl.exec_cmd([[swayosd-client --custom-message "󰂛  Do Not Disturb"]])
+        hl.exec_cmd([[swayosd-client --custom-message "󰂛   Do Not Disturb"]])
+    end
+end)
+
+hl.bind(mainMod .. " + SHIFT + I", function()
+    local handle = io.popen("pgrep hypridle")
+    local running = handle:read("*a"):gsub("%s+", "")
+    handle:close()
+
+    if running ~= "" then
+        -- Disable hypridle
+        hl.exec_cmd("pkill hypridle")
+        hl.exec_cmd([[swayosd-client --custom-message "󰒳  Stay Awake"]])
+    else
+        -- Enable hypridle
+        hl.exec_cmd("hypridle &")
+        hl.exec_cmd([[swayosd-client --custom-message "󰒲  Auto Lock On"]])
     end
 end)
 
@@ -600,9 +616,16 @@ hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd(
     "hyprshot -m window -m active -o " .. screenshots_dir .. " -z"
 ))
 
+-- SUPER + S → region screenshot, auto save to disk + clipboard
+hl.bind(mainMod .. " + S", hl.dsp.exec_cmd(
+    "sh -c 'mkdir -p " .. screenshots_dir ..
+    " && hyprshot -m region -o " .. screenshots_dir ..
+    " && wl-copy < \"$(ls -t " .. screenshots_dir .. "/*.png | head -n1)\"'"
+))
+
 -- SUPER + SHIFT + S → region select, pipe raw output into satty for annotation
 -- satty saves the annotated result to disk and copies to clipboard
-hl.bind(mainMod .. " + S", hl.dsp.exec_cmd(
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(
     "sh -c 'mkdir -p " .. screenshots_dir .. " && hyprshot -m region -z --raw | satty --filename -" ..
     " --copy-command wl-copy --save-after-copy" ..
     " --actions-on-enter save-to-clipboard,exit" ..
