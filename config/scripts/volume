@@ -17,19 +17,19 @@ get_mic_volume() {
 # Increase Volume
 inc_volume() {
     wpctl set-volume -l "$MAX_VOLUME" @DEFAULT_AUDIO_SINK@ "${STEP}%+" \
-        && swayosd-client --output-volume raise
+        && swayosd-client --output-volume raise --max-volume 150
 }
 
 # Decrease Volume
 dec_volume() {
     wpctl set-volume @DEFAULT_AUDIO_SINK@ "${STEP}%-" \
-        && swayosd-client --output-volume lower
+        && swayosd-client --output-volume lower --max-volume 150
 }
 
 # Toggle Output Mute
 toggle_mute() {
     wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle \
-        && swayosd-client --output-volume mute-toggle
+        && swayosd-client --output-volume mute-toggle --max-volume 150
 }
 
 # Toggle Mic Mute

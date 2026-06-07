@@ -85,6 +85,8 @@
     anydesk
     appimage-run
     inputs.helium-flake.packages.${pkgs.system}.helium
+    video-trimmer
+    proton-vpn
   ];
 
   programs.zsh.enable = true;

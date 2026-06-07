@@ -41,6 +41,6 @@ in
     name = "phinger-cursors-dark";
     size = 24;
   };
-
+  
   home.stateVersion = "25.11";
 }
