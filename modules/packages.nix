@@ -87,6 +87,9 @@
     inputs.helium-flake.packages.${pkgs.system}.helium
     video-trimmer
     proton-vpn
+    calibre
+    gnome-epub-thumbnailer
+    seanime
   ];
 
   programs.zsh.enable = true;
@@ -157,4 +160,6 @@
       FLUSH PRIVILEGES;
     '';
   };
+
+  services.meilisearch.enable = true;
 }
